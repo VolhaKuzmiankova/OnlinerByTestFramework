@@ -3,5 +3,7 @@
     public class AppSettings
     {
         public ServiceSettings Services { get; set; }
+        
+        public Configuration Configuration { get; set; }
     }
 }
