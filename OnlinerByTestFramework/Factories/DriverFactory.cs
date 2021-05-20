@@ -10,16 +10,12 @@ namespace OnlinerByTestFramework.Factories
     {
         public static IWebDriver GetDriver(BrowserName name)
         {
-            switch (name)
-            { 
-                case BrowserName.Chrome:
-                    return new ChromeDriver(DriverCapabilityGenerator.GetChromeOptions());
-                case BrowserName.FireFox:
-                    return new FirefoxDriver(DriverCapabilityGenerator.GetFireFoxOptions());
-                default:
-                    return new ChromeDriver();
-                    
-            }
+            return name switch
+            {
+                BrowserName.Chrome => new ChromeDriver(DriverCapabilityGenerator.GetChromeOptions()),
+                BrowserName.FireFox => new FirefoxDriver(DriverCapabilityGenerator.GetFireFoxOptions()),
+                _ => new ChromeDriver()
+            };
         }
     }
 }

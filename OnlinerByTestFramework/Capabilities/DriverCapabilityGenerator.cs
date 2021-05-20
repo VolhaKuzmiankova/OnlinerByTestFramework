@@ -22,12 +22,6 @@ namespace OnlinerByTestFramework.Capabilities
         public static FirefoxOptions GetFireFoxOptions()
         {
             var firefoxOptions = new FirefoxOptions();
-            var firefoxOptionsProfile = new FirefoxProfile();
-
-            firefoxOptionsProfile.SetPreference("browser.download.folderList", 2);
-            firefoxOptionsProfile.SetPreference("browser.helperApps.neverAsk.saveToDisk", Constants.ConstantsForFireFox.MimeTypes);
-            firefoxOptionsProfile.SetPreference("browser.helperApps.neverAsk.openFile", Constants.ConstantsForFireFox.MimeTypes);
-            firefoxOptions.Profile = firefoxOptionsProfile;
 
             firefoxOptions.SetLoggingPreference(LogType.Browser, LogLevel.All);
             firefoxOptions.SetLoggingPreference(LogType.Driver, LogLevel.All);
