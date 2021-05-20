@@ -1,20 +1,16 @@
-using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OnlinerByTestFramework.Factories;
 using Xunit;
 
-namespace OnlinerByTestFramework
+namespace OnlinerByTestFramework.Tests
 {
     public class FirstTest
     {
-        private IWebDriver Driver;
-        
         [Fact]
         public void Test1()
         {
-            Driver = new ChromeDriver();
-            Driver.Navigate().GoToUrl(Startup.AppSettings.Services.OnlinerByApp.AppUrl);
-            Driver.Quit();
+            var driver = DriverFactory.GetDriver(Startup.AppSettings.Configuration.Browser);
+            driver.Navigate().GoToUrl(Startup.AppSettings.Services.OnlinerByApp.AppUrl);
+            driver.Quit();
         }
     }
 }
