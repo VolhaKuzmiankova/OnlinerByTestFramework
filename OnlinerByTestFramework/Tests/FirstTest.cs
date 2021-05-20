@@ -1,16 +1,21 @@
-using OnlinerByTestFramework.Factories;
+using OnlinerByTestFramework.Fixtures;
 using Xunit;
 
 namespace OnlinerByTestFramework.Tests
 {
-    public class FirstTest
+    public class FirstTest : IClassFixture<DriverFixture>
     {
+        DriverFixture _fixture;
+
+        public FirstTest(DriverFixture fixture)
+        {
+            _fixture = fixture;
+        }
+
         [Fact]
         public void Test1()
         {
-            var driver = DriverFactory.GetDriver(Startup.AppSettings.Configuration.Browser);
-            driver.Navigate().GoToUrl(Startup.AppSettings.Services.OnlinerByApp.AppUrl);
-            driver.Quit();
+            _fixture.Driver.Navigate().GoToUrl(Startup.AppSettings.Services.OnlinerByApp.AppUrl);
         }
     }
 }
