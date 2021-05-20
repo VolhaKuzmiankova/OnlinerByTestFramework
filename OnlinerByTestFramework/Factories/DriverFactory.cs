@@ -1,4 +1,5 @@
-﻿using OnlinerByTestFramework.Enums;
+﻿using OnlinerByTestFramework.Capabilities;
+using OnlinerByTestFramework.Enums;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
@@ -10,13 +11,14 @@ namespace OnlinerByTestFramework.Factories
         public static IWebDriver GetDriver(BrowserName name)
         {
             switch (name)
-            {
+            { 
                 case BrowserName.Chrome:
-                    return new ChromeDriver();
+                    return new ChromeDriver(DriverCapabilityGenerator.GetChromeOptions());
                 case BrowserName.FireFox:
-                    return new FirefoxDriver();
+                    return new FirefoxDriver(DriverCapabilityGenerator.GetFireFoxOptions());
                 default:
-                    return default;
+                    return new ChromeDriver();
+                    
             }
         }
     }
