@@ -5,7 +5,7 @@ namespace OnlinerByTestFramework.Tests
 {
     public class FirstTest : IClassFixture<DriverFixture>
     {
-        DriverFixture _fixture;
+        private DriverFixture _fixture;
 
         public FirstTest(DriverFixture fixture)
         {
