@@ -6,6 +6,6 @@
         
         public Configuration Configuration { get; set; }
         
-        public UsersSettings Users { get; set; }
+        public UserSettings User { get; set; }
     }
 }

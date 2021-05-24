@@ -11,9 +11,9 @@ namespace OnlinerByTestFramework.Steps
             _loginPage = loginPage;
         }
 
-        public HomePage Login(string username, string password)
+        public void Login(string username, string password)
         {
-            return _loginPage.TypeUsername(username).TypePassword(password).SubmitForm();
+            _loginPage.TypeUsername(username).TypePassword(password).SubmitForm();
         }
     }
 }
