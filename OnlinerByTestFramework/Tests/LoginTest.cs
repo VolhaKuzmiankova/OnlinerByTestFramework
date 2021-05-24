@@ -14,20 +14,22 @@ namespace OnlinerByTestFramework.Tests
         private string Password = Startup.AppSettings.User.Password;
         
         private TestFixture _fixture;
-
+        
+        private LoginSteps _loginSteps;
+        
         public LoginTest(TestFixture fixture)
         {
             _fixture = fixture;
+            _loginSteps = new LoginSteps(new LoginPage(_fixture.Driver));
         }
 
         [Fact]
         public void LoginTest_WithValidCredential()
         {
             _fixture.Driver.Navigate().GoToUrl(Url);
-
-            var loginSteps = new LoginSteps(new LoginPage(_fixture.Driver));
             
-            loginSteps.OpenLoginForm().Login(UserName, Password);
+            
+            _loginSteps.OpenLoginForm().Login(UserName, Password);
 
         }
     }
