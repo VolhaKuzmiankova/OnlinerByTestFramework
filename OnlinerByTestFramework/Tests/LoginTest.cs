@@ -1,4 +1,3 @@
-using System.Threading;
 using OnlinerByTestFramework.Fixtures;
 using OnlinerByTestFramework.Pages;
 using OnlinerByTestFramework.Steps;
@@ -6,33 +5,30 @@ using Xunit;
 
 namespace OnlinerByTestFramework.Tests
 {
-    public class LoginTest : IClassFixture<DriverFixture>
+    public class LoginTest : IClassFixture<TestFixture>
     {
         private string Url = Startup.AppSettings.Services.OnlinerByApp.AppUrl;
+        
         private string UserName = Startup.AppSettings.User.UserName;
+        
         private string Password = Startup.AppSettings.User.Password;
         
-        private DriverFixture _fixture;
+        private TestFixture _fixture;
 
-        public LoginTest(DriverFixture fixture)
+        public LoginTest(TestFixture fixture)
         {
             _fixture = fixture;
         }
 
         [Fact]
-        public void TestLogin()
+        public void LoginTest_WithValidCredential()
         {
             _fixture.Driver.Navigate().GoToUrl(Url);
-            
-            var loginPage = new LoginPage(_fixture.Driver);
-            
-            loginPage.OpenLoginForm();
-            
-            var loginSteps = new LoginSteps(loginPage);
 
-            loginSteps.Login(UserName, Password);
+            var loginSteps = new LoginSteps(new LoginPage(_fixture.Driver));
+            
+            loginSteps.OpenLoginForm().Login(UserName, Password);
 
-            Thread.Sleep(2000);
         }
     }
 }

@@ -6,17 +6,21 @@ namespace OnlinerByTestFramework.Pages
     public class LoginPage : BasePage
     {
         private static readonly By ButtonSelector = By.XPath("//div[@class='auth-bar__item auth-bar__item--text']");
+
         private static readonly By EmailSelector = By.XPath("//*[@placeholder ='Ник или e-mail']");
+
         private static readonly By PasswordSelector = By.XPath("//*[@placeholder ='Пароль']");
+
         private static readonly By LoginButtonSelector = By.XPath("//*[@class ='auth-form__control auth-form__control_condensed-additional']");
 
         public LoginPage(IWebDriver driver) : base(driver)
         {
         }
 
-        public void OpenLoginForm()
+        public LoginPage OpenForm()
         {
             _driver.FindElement(ButtonSelector).Click();
+            return this;
         }
 
         public LoginPage TypeUsername(string username)
@@ -31,9 +35,10 @@ namespace OnlinerByTestFramework.Pages
             return this;
         }
 
-        public void SubmitForm()
+        public LoginPage SubmitForm()
         {
             _driver.FindElement(LoginButtonSelector).Click();
+            return this;
         }
     }
 }
