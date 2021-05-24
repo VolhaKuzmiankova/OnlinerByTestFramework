@@ -18,7 +18,7 @@ namespace OnlinerByTestFramework.Capabilities
 
             return chromeOptions;
         }
-        
+
         public static FirefoxOptions GetFireFoxOptions()
         {
             var firefoxOptions = new FirefoxOptions();

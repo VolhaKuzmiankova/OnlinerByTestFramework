@@ -5,5 +5,7 @@
         public ServiceSettings Services { get; set; }
         
         public Configuration Configuration { get; set; }
+        
+        public UserSettings User { get; set; }
     }
 }

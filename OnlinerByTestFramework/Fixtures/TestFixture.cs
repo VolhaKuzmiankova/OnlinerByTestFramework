@@ -4,11 +4,12 @@ using OpenQA.Selenium;
 
 namespace OnlinerByTestFramework.Fixtures
 {
-    public class DriverFixture : IDisposable
+    public class TestFixture : IDisposable
     {
         public IWebDriver Driver { get; private set; }
 
-        public DriverFixture()
+
+        public TestFixture()
         {
             Driver = DriverFactory.GetDriver(Startup.AppSettings.Configuration.Browser);
         }
