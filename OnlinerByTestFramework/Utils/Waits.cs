@@ -7,13 +7,11 @@ namespace OnlinerByTestFramework.Utils
 {
     public class Waits
     {
-        private IWebDriver _driver;
         private WebDriverWait _wait;
 
         public Waits(IWebDriver driver)
         {
-            _driver = driver;
-            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(3));
+            _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
         }
 
         public IWebElement GetVisible(By by)

@@ -7,7 +7,7 @@ namespace OnlinerByTestFramework.Pages
 {
     public class GoodsPage : BasePage
     {
-        private WebDriverWait _wait;
+        private readonly Waits _wait;
 
         private static readonly By BuyButtonSelector = By.LinkText("В корзину");
 
@@ -16,6 +16,7 @@ namespace OnlinerByTestFramework.Pages
 
         public GoodsPage(IWebDriver driver) : base(driver)
         {
+            _wait = new Waits(driver);
         }
 
         public GoodsPage ClickButton()
@@ -24,11 +25,11 @@ namespace OnlinerByTestFramework.Pages
             return this;
         }
 
-        public GoodsPage GoToCart()
+        public CartPage GoToCart()
         {
-            var cartButton = new Waits(_driver).GetClickable(ToCartButtonSelector);
+            var cartButton = _wait.GetClickable(ToCartButtonSelector);
             cartButton.Click();
-            return this;
+            return new CartPage(_driver);
         }
     }
 }

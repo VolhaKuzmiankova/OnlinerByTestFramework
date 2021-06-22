@@ -21,15 +21,14 @@ namespace OnlinerByTestFramework.Tests
         [Fact]
         public void LoginTest_WithValidCredential()
         {
-            // _fixture.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             _fixture.Driver.Navigate().GoToUrl(Url);
-            var loginPage = new LoginPage(_fixture.Driver);
+            var homePage = new HomePage(_fixture.Driver);
             var catalogPage = new CatalogSamsungPage(_fixture.Driver);
             var goodsPage = new GoodsPage(_fixture.Driver);
             var cartPage = new CartPage(_fixture.Driver);
 
 
-            var cleanCartSteps = new CleanCartSteps(loginPage, catalogPage, goodsPage, cartPage);
+            var cleanCartSteps = new CleanCartSteps(homePage, catalogPage, goodsPage, cartPage);
 
             cleanCartSteps.OpenCatalog();
 

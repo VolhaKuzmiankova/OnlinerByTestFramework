@@ -4,16 +4,16 @@ namespace OnlinerByTestFramework.Steps
 {
     public class CleanCartSteps
     {
-        private readonly LoginPage _loginPage;
+        private readonly HomePage _homePage;
         private readonly CatalogSamsungPage _catalogSamsung;
         private readonly GoodsPage _goodsPage;
         private readonly CartPage _cartPage;
 
 
-        public CleanCartSteps(LoginPage loginPage, CatalogSamsungPage catalogSamsung, GoodsPage goodsPage,
+        public CleanCartSteps(HomePage homePage, CatalogSamsungPage catalogSamsung, GoodsPage goodsPage,
             CartPage cartPage)
         {
-            _loginPage = loginPage;
+            _homePage = homePage;
             _catalogSamsung = catalogSamsung;
             _goodsPage = goodsPage;
             _cartPage = cartPage;
@@ -21,7 +21,7 @@ namespace OnlinerByTestFramework.Steps
 
         public CleanCartSteps OpenCatalog()
         {
-            _loginPage.OpenCatalog();
+            _homePage.OpenCatalog();
             return this;
         }
 

@@ -12,10 +12,10 @@ namespace OnlinerByTestFramework.Pages
         {
         }
 
-        public CatalogSamsungPage OpenGoodsPage()
+        public GoodsPage OpenGoodsPage()
         {
             _driver.FindElement(ModelSelector).Click();
-            return this;
+            return new GoodsPage(_driver);
         }
     }
 }
