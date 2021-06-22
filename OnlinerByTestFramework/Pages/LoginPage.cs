@@ -12,6 +12,8 @@ namespace OnlinerByTestFramework.Pages
         private static readonly By PasswordSelector = By.XPath("//*[@placeholder ='Пароль']");
 
         private static readonly By LoginButtonSelector = By.XPath("//*[@class ='auth-form__control auth-form__control_condensed-additional']");
+        
+        private static readonly By GoodsTypeSelector = By.XPath("//span[contains(text(),'Телевизоры')]");
 
         public LoginPage(IWebDriver driver) : base(driver)
         {
@@ -38,6 +40,12 @@ namespace OnlinerByTestFramework.Pages
         public LoginPage SubmitForm()
         {
             _driver.FindElement(LoginButtonSelector).Click();
+            return this;
+        }
+
+        public LoginPage OpenCatalog()
+        {
+            _driver.FindElement(GoodsTypeSelector).Click();
             return this;
         }
     }
