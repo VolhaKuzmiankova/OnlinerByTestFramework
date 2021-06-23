@@ -1,7 +1,6 @@
 ﻿using OnlinerByTestFramework.Pages.Base;
 using OnlinerByTestFramework.Utils;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 
 namespace OnlinerByTestFramework.Pages
 {

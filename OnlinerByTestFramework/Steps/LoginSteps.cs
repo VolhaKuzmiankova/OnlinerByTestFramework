@@ -1,27 +1,28 @@
 ﻿using OnlinerByTestFramework.Pages;
+using OnlinerByTestFramework.Steps.Base;
+using OpenQA.Selenium;
 
 namespace OnlinerByTestFramework.Steps
 {
-    public class LoginSteps
+    public class LoginSteps : BaseSteps
     {
         private readonly LoginPage _loginPage;
 
-        public LoginSteps(LoginPage loginPage)
+        public LoginSteps(IWebDriver driver) : base(driver)
         {
-            _loginPage = loginPage;
+            _loginPage = new LoginPage(driver);
         }
 
         public LoginSteps OpenLoginForm()
         {
-              _loginPage.OpenForm();
-              return this;
-
+            _loginPage.OpenForm();
+            return this;
         }
 
-        public LoginSteps Login (string username, string password)
+        public LoginSteps Login(string username, string password)
         {
-             _loginPage.TypeUsername(username).TypePassword(password).SubmitForm();
-             return this;
+            _loginPage.TypeUsername(username).TypePassword(password).SubmitForm();
+            return this;
         }
     }
 }

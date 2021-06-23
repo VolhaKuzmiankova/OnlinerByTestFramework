@@ -1,5 +1,4 @@
 using OnlinerByTestFramework.Fixtures;
-using OnlinerByTestFramework.Pages;
 using OnlinerByTestFramework.Steps;
 using Xunit;
 
@@ -7,13 +6,11 @@ namespace OnlinerByTestFramework.Tests
 {
     public class LoginTest : IClassFixture<TestFixture>
     {
-        private string Url = Startup.AppSettings.Services.OnlinerByApp.AppUrl;
+        private readonly string _userName = Startup.AppSettings.User.UserName;
         
-        private string UserName = Startup.AppSettings.User.UserName;
+        private readonly string _password = Startup.AppSettings.User.Password;
         
-        private string Password = Startup.AppSettings.User.Password;
-        
-        private TestFixture _fixture;
+        private readonly TestFixture _fixture;
 
         public LoginTest(TestFixture fixture)
         {
@@ -23,11 +20,9 @@ namespace OnlinerByTestFramework.Tests
         [Fact]
         public void LoginTest_WithValidCredential()
         {
-            _fixture.Driver.Navigate().GoToUrl(Url);
-
-            var loginSteps = new LoginSteps(new LoginPage(_fixture.Driver));
+            var loginSteps = new LoginSteps(_fixture.Driver);
             
-            loginSteps.OpenLoginForm().Login(UserName, Password);
+            loginSteps.OpenLoginForm().Login(_userName, _password);
 
         }
     }

@@ -1,22 +1,22 @@
 ﻿using OnlinerByTestFramework.Pages;
+using OnlinerByTestFramework.Steps.Base;
+using OpenQA.Selenium;
 
 namespace OnlinerByTestFramework.Steps
 {
-    public class CleanCartSteps
+    public class CleanCartSteps : BaseSteps
     {
         private readonly HomePage _homePage;
         private readonly CatalogSamsungPage _catalogSamsung;
         private readonly GoodsPage _goodsPage;
         private readonly CartPage _cartPage;
 
-
-        public CleanCartSteps(HomePage homePage, CatalogSamsungPage catalogSamsung, GoodsPage goodsPage,
-            CartPage cartPage)
+        public CleanCartSteps(IWebDriver driver) : base(driver)
         {
-            _homePage = homePage;
-            _catalogSamsung = catalogSamsung;
-            _goodsPage = goodsPage;
-            _cartPage = cartPage;
+            _homePage = new HomePage(driver);
+            _catalogSamsung = new CatalogSamsungPage(driver);
+            _goodsPage = new GoodsPage(driver);
+            _cartPage = new CartPage(driver);
         }
 
         public CleanCartSteps OpenCatalog()

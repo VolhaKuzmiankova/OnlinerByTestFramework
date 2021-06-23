@@ -12,6 +12,7 @@ namespace OnlinerByTestFramework.Fixtures
         public TestFixture()
         {
             Driver = DriverFactory.GetDriver(Startup.AppSettings.Configuration.Browser);
+            Driver.Navigate().GoToUrl(Startup.AppSettings.Services.OnlinerByApp.AppUrl);
         }
 
         public void Dispose()
