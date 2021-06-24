@@ -1,34 +1,32 @@
 ﻿using OnlinerByTestFramework.Pages.Base;
-using OnlinerByTestFramework.Utils;
 using OpenQA.Selenium;
 
 namespace OnlinerByTestFramework.Pages
 {
     public class GoodsPage : BasePage
     {
-        private readonly Waits _wait;
-
         private static readonly By BuyButtonSelector = By.LinkText("В корзину");
 
         private static readonly By ToCartButtonSelector = By.LinkText("В корзине");
 
 
-        public GoodsPage(IWebDriver driver) : base(driver)
+        public GoodsPage(IWebDriver driver) : base(driver, BuyButtonSelector, Constants.PageName.GoodsPage)
         {
-            _wait = new Waits(driver);
         }
 
         public GoodsPage ClickButton()
         {
-            _driver.FindElement(BuyButtonSelector).Click();
+            Driver.FindElement(BuyButtonSelector).Click();
+
             return this;
         }
 
         public CartPage GoToCart()
         {
-            var cartButton = _wait.GetClickable(ToCartButtonSelector);
+            var cartButton = Waits.GetClickable(ToCartButtonSelector);
             cartButton.Click();
-            return new CartPage(_driver);
+
+            return new CartPage(Driver);
         }
     }
 }

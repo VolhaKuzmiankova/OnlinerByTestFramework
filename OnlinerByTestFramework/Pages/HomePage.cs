@@ -1,22 +1,26 @@
-﻿using OnlinerByTestFramework.Pages.Base;
+﻿using OnlinerByTestFramework.Constants;
+using OnlinerByTestFramework.Pages.Base;
 using OpenQA.Selenium;
 
 namespace OnlinerByTestFramework.Pages
 {
     public class HomePage : BasePage
     {
-        private static readonly By GoodsTypeSelector = By.XPath("//span[contains(text(),'Телевизоры')]");
-        
-        public HomePage(IWebDriver driver) : base(driver)
+        public HomePage(IWebDriver driver) : base(driver, GetLocator(DataForLocator.TypeOfGoods), PageName.HomePage)
         {
         }
-        
-        public CatalogSamsungPage OpenCatalog()
+
+        private static By GetLocator(string model)
         {
-            _driver.FindElement(GoodsTypeSelector).Click();
-            return new CatalogSamsungPage(_driver);
+            return By.XPath($"//span[contains(text(),'{model}')]");
         }
-        
+
+        public CatalogSamsungPage OpenCatalog(string model)
+        {
+            Driver.FindElement(GetLocator(model)).Click();
+            
+            return new CatalogSamsungPage(Driver);
+        }
         
     }
 }

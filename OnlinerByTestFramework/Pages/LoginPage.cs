@@ -16,37 +16,37 @@ namespace OnlinerByTestFramework.Pages
 
         private static readonly By GoodsTypeSelector = By.XPath("//span[contains(text(),'Телевизоры')]");
 
-        public LoginPage(IWebDriver driver) : base(driver)
+        public LoginPage(IWebDriver driver) : base(driver, ButtonSelector, Constants.PageName.LoginPage)
         {
         }
 
         public LoginPage OpenForm()
         {
-            _driver.FindElement(ButtonSelector).Click();
+            Driver.FindElement(ButtonSelector).Click();
             return this;
         }
 
         public LoginPage TypeUsername(string username)
         {
-            _driver.FindElement(EmailSelector).SendKeys(username);
+            Driver.FindElement(EmailSelector).SendKeys(username);
             return this;
         }
 
         public LoginPage TypePassword(string password)
         {
-            _driver.FindElement(PasswordSelector).SendKeys(password);
+            Driver.FindElement(PasswordSelector).SendKeys(password);
             return this;
         }
 
         public LoginPage SubmitForm()
         {
-            _driver.FindElement(LoginButtonSelector).Click();
+            Driver.FindElement(LoginButtonSelector).Click();
             return this;
         }
 
         public LoginPage OpenCatalog()
         {
-            _driver.FindElement(GoodsTypeSelector).Click();
+            Driver.FindElement(GoodsTypeSelector).Click();
             return this;
         }
     }

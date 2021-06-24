@@ -1,6 +1,7 @@
 ﻿using OnlinerByTestFramework.Pages;
 using OnlinerByTestFramework.Steps.Base;
 using OpenQA.Selenium;
+using Xunit;
 
 namespace OnlinerByTestFramework.Steps
 {
@@ -10,7 +11,7 @@ namespace OnlinerByTestFramework.Steps
         private readonly CatalogSamsungPage _catalogSamsung;
         private readonly GoodsPage _goodsPage;
         private readonly CartPage _cartPage;
-
+        
         public CleanCartSteps(IWebDriver driver) : base(driver)
         {
             _homePage = new HomePage(driver);
@@ -21,13 +22,15 @@ namespace OnlinerByTestFramework.Steps
 
         public CleanCartSteps OpenCatalog()
         {
-            _homePage.OpenCatalog();
+            _homePage.OpenCatalog(Constants.DataForLocator.TypeOfGoods);
+            
             return this;
         }
 
         public CleanCartSteps ChooseModel()
         {
-            _catalogSamsung.OpenGoodsPage();
+            _catalogSamsung.OpenGoodsPage(Constants.DataForLocator.TVModel);
+            
             return this;
         }
 
@@ -35,12 +38,14 @@ namespace OnlinerByTestFramework.Steps
         {
             _goodsPage.ClickButton();
             _goodsPage.GoToCart();
+            
             return this;
         }
 
         public CleanCartSteps DeleteSelectedGood()
         {
             _cartPage.DeleteGood();
+            
             return this;
         }
     }

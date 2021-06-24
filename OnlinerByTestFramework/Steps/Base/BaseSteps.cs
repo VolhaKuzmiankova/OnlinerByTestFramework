@@ -6,7 +6,7 @@ namespace OnlinerByTestFramework.Steps.Base
     {
         private IWebDriver _driver;
 
-        public BaseSteps(IWebDriver driver)
+        protected BaseSteps(IWebDriver driver)
         {
             _driver = driver;
         }

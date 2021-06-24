@@ -15,13 +15,19 @@ namespace OnlinerByTestFramework.Steps
 
         public LoginSteps OpenLoginForm()
         {
+            _loginPage.IsPageOpened();
             _loginPage.OpenForm();
+            
             return this;
         }
 
         public LoginSteps Login(string username, string password)
         {
-            _loginPage.TypeUsername(username).TypePassword(password).SubmitForm();
+            _loginPage
+                .TypeUsername(username)
+                .TypePassword(password)
+                .SubmitForm();
+            
             return this;
         }
     }

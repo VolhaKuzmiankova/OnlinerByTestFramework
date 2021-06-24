@@ -7,7 +7,6 @@ namespace OnlinerByTestFramework.Tests
     public class LoginTest : IClassFixture<TestFixture>
     {
         private readonly string _userName = Startup.AppSettings.User.UserName;
-        
         private readonly string _password = Startup.AppSettings.User.Password;
         
         private readonly TestFixture _fixture;

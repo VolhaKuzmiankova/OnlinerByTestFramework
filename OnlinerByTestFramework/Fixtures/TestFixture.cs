@@ -6,7 +6,7 @@ namespace OnlinerByTestFramework.Fixtures
 {
     public class TestFixture : IDisposable
     {
-        public IWebDriver Driver { get; private set; }
+        public IWebDriver Driver { get; }
 
 
         public TestFixture()

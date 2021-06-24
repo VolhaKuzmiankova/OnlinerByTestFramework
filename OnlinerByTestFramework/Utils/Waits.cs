@@ -14,14 +14,29 @@ namespace OnlinerByTestFramework.Utils
             _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
         }
 
-        public IWebElement GetVisible(By by)
+        public bool IsElementVisible(By by)
         {
-           return _wait.Until(ExpectedConditions.ElementIsVisible(by));
+          
+            try
+            {
+                _wait.Until(ExpectedConditions.ElementIsVisible(by));
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public IWebElement GetClickable(By by)
         {
             return _wait.Until(ExpectedConditions.ElementToBeClickable(by));
+        }
+
+        public IWebElement GetElementVisible(By by)
+        {
+            return _wait.Until(ExpectedConditions.ElementIsVisible(by));
         }
     }
 }
