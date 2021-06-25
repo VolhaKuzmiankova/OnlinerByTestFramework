@@ -29,12 +29,12 @@ namespace OnlinerByTestFramework.Utils
             return true;
         }
 
-        public IWebElement GetClickable(By by)
+        public IWebElement WaitToBeClickable(By by)
         {
             return _wait.Until(ExpectedConditions.ElementToBeClickable(by));
         }
 
-        public IWebElement GetElementVisible(By by)
+        public IWebElement WaitToBeVisible(By by)
         {
             return _wait.Until(ExpectedConditions.ElementIsVisible(by));
         }

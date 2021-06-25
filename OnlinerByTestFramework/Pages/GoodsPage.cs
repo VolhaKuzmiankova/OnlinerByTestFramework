@@ -15,7 +15,7 @@ namespace OnlinerByTestFramework.Pages
         {
         }
 
-        public GoodsPage ClickButton()
+        public GoodsPage ClickBuyButton()
         {
             Driver.FindElement(BuyButtonSelector).Click();
 
@@ -24,7 +24,7 @@ namespace OnlinerByTestFramework.Pages
 
         public CartPage GoToCart()
         {
-            var cartButton = Waits.GetClickable(ToCartButtonSelector);
+            var cartButton = Waits.WaitToBeClickable(ToCartButtonSelector);
             cartButton.Click();
 
             return new CartPage(Driver);

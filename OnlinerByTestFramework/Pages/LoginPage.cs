@@ -19,7 +19,6 @@ namespace OnlinerByTestFramework.Pages
         public LoginPage(IWebDriver driver) : base(driver, ButtonSelector, Constants.PageName.LoginPage)
         {
         }
-
         public LoginPage OpenForm()
         {
             Driver.FindElement(ButtonSelector).Click();

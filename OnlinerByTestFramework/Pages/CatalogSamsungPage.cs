@@ -6,18 +6,16 @@ namespace OnlinerByTestFramework.Pages
 {
     public class CatalogSamsungPage : BasePage
     {
+        private static readonly By ModelSelector = By.XPath($"//span[contains (text(), '{TypeOfGoods.TvModel}')]");
 
-        public CatalogSamsungPage(IWebDriver driver) : base(driver, GetLocator(DataForLocator.TvModel), PageName.CatalogPage)
+        public CatalogSamsungPage(IWebDriver driver) : base(driver, ModelSelector,
+            PageName.CatalogPage)
         {
-        }
-        private static By GetLocator(string model)
-        {
-            return By.XPath($"//*[contains (text(), '{model}')]");
         }
 
         public GoodsPage OpenGoodsPage(string model)
         {
-            Driver.FindElement(GetLocator(model)).Click();
+            Driver.FindElement(ModelSelector).Click();
 
             return new GoodsPage(Driver);
         }

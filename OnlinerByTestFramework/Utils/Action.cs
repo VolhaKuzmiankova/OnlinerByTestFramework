@@ -15,7 +15,7 @@ namespace OnlinerByTestFramework.Utils
 
         public void MoveToElementAndClick(By by)
         {
-            _actions.MoveToElement(_waits.GetElementVisible(by))
+            _actions.MoveToElement(_waits.WaitToBeVisible(by))
                 .Click()
                 .Build()
                 .Perform();

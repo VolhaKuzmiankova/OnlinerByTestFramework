@@ -9,7 +9,7 @@ namespace OnlinerByTestFramework.Pages
     {
         private readonly Action _action;
         private static readonly By DeleteButtonSelector = By.XPath("//div[@class='cart-form__control'][1]");
-        private static readonly By MessageSelector = By.XPath("//*[contains (text(), 'удалили')]");
+        private static readonly By MessageSelector = By.XPath("//div[contains (text(), 'удалили')]");
 
         public CartPage(IWebDriver driver) : base(driver, DeleteButtonSelector,PageName.CartPage )
         {
@@ -23,11 +23,9 @@ namespace OnlinerByTestFramework.Pages
             return this;
         }
 
-        public string Message()
+        public string GetMessage()
         {
-           return Waits.GetElementVisible(MessageSelector).Text;
-            
+            return Waits.WaitToBeVisible(MessageSelector).Text;
         }
-        
     }
 }

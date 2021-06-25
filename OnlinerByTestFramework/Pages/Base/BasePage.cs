@@ -8,20 +8,19 @@ namespace OnlinerByTestFramework.Pages.Base
     {
         protected readonly IWebDriver Driver;
         protected readonly Waits Waits;
-        private readonly By _locator;
+        private readonly By locator;
         private readonly string _pageName;
 
         protected BasePage(IWebDriver driver, By locator, string pageName)
         {
             Driver = driver;
             Waits = new Waits(Driver);
-            _locator = locator;
             _pageName = pageName;
         }
 
         public void IsPageOpened()
         {
-            var isVisible = Waits.IsElementVisible(_locator);
+            var isVisible = Waits.IsElementVisible(locator);
             if (!isVisible)
             {
                 throw new Exception($"Page is not opened {_pageName}");

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using OnlinerByTestFramework.Constants;
 using OnlinerByTestFramework.Pages;
 using OnlinerByTestFramework.Steps.Base;
 using OpenQA.Selenium;
@@ -12,7 +12,7 @@ namespace OnlinerByTestFramework.Steps
         private readonly CatalogSamsungPage _catalogSamsung;
         private readonly GoodsPage _goodsPage;
         private readonly CartPage _cartPage;
-        
+
         public CleanCartSteps(IWebDriver driver) : base(driver)
         {
             _homePage = new HomePage(driver);
@@ -23,37 +23,37 @@ namespace OnlinerByTestFramework.Steps
 
         public CleanCartSteps OpenCatalog()
         {
-            _homePage.OpenCatalog(Constants.DataForLocator.TypeOfGoods);
-            
+            _homePage.OpenCatalog(TypeOfGoods.ProductTv);
+
             return this;
         }
 
         public CleanCartSteps ChooseModel()
         {
-            _catalogSamsung.OpenGoodsPage(Constants.DataForLocator.TvModel);
-            
+            _catalogSamsung.OpenGoodsPage(TypeOfGoods.TvModel);
+
             return this;
         }
 
         public CleanCartSteps AddTheGood()
         {
-            _goodsPage.ClickButton();
+            _goodsPage.ClickBuyButton();
             _goodsPage.GoToCart();
-            
+
             return this;
         }
 
         public CleanCartSteps DeleteSelectedGood()
         {
             _cartPage.DeleteGood();
-            
+
             return this;
         }
 
-        public CleanCartSteps MessageVerification()
+        public CleanCartSteps MessageShouldBe(string expected)
         {
-            Assert.StartsWith(Constants.Asserts.DeleteMessage, _cartPage.Message());
-            
+            Assert.StartsWith(expected, _cartPage.GetMessage());
+
             return this;
         }
     }
