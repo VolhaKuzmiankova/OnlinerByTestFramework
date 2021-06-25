@@ -7,7 +7,7 @@ namespace OnlinerByTestFramework.Pages
     public class CatalogSamsungPage : BasePage
     {
 
-        public CatalogSamsungPage(IWebDriver driver) : base(driver, GetLocator(DataForLocator.TVModel), PageName.CatalogPage)
+        public CatalogSamsungPage(IWebDriver driver) : base(driver, GetLocator(DataForLocator.TvModel), PageName.CatalogPage)
         {
         }
         private static By GetLocator(string model)

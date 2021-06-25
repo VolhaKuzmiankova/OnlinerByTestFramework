@@ -1,6 +1,6 @@
 ﻿namespace OnlinerByTestFramework.Constants
 {
-    public class PageName
+    public static class PageName
     {
         public const string LoginPage = "LoginPage";
         public const string CartPage = "CartPage";

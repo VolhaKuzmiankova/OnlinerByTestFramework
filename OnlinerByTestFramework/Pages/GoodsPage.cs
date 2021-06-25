@@ -1,4 +1,5 @@
-﻿using OnlinerByTestFramework.Pages.Base;
+﻿using OnlinerByTestFramework.Constants;
+using OnlinerByTestFramework.Pages.Base;
 using OpenQA.Selenium;
 
 namespace OnlinerByTestFramework.Pages
@@ -10,7 +11,7 @@ namespace OnlinerByTestFramework.Pages
         private static readonly By ToCartButtonSelector = By.LinkText("В корзине");
 
 
-        public GoodsPage(IWebDriver driver) : base(driver, BuyButtonSelector, Constants.PageName.GoodsPage)
+        public GoodsPage(IWebDriver driver) : base(driver, BuyButtonSelector, PageName.GoodsPage)
         {
         }
 

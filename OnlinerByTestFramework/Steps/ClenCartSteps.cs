@@ -1,4 +1,5 @@
-﻿using OnlinerByTestFramework.Pages;
+﻿using System;
+using OnlinerByTestFramework.Pages;
 using OnlinerByTestFramework.Steps.Base;
 using OpenQA.Selenium;
 using Xunit;
@@ -29,7 +30,7 @@ namespace OnlinerByTestFramework.Steps
 
         public CleanCartSteps ChooseModel()
         {
-            _catalogSamsung.OpenGoodsPage(Constants.DataForLocator.TVModel);
+            _catalogSamsung.OpenGoodsPage(Constants.DataForLocator.TvModel);
             
             return this;
         }
@@ -45,6 +46,13 @@ namespace OnlinerByTestFramework.Steps
         public CleanCartSteps DeleteSelectedGood()
         {
             _cartPage.DeleteGood();
+            
+            return this;
+        }
+
+        public CleanCartSteps MessageVerification()
+        {
+            Assert.StartsWith(Constants.Asserts.DeleteMessage, _cartPage.Message());
             
             return this;
         }
