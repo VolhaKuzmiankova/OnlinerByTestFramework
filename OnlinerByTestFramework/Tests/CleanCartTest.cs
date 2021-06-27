@@ -20,8 +20,8 @@ namespace OnlinerByTestFramework.Tests
         {
             var cleanCartSteps = new CleanCartSteps(_fixture.Driver);
 
-            cleanCartSteps.OpenCatalog()
-                .ChooseModel()
+            cleanCartSteps.OpenCatalog(TypeOfGoods.ProductTv)
+                .ChooseModel(TypeOfGoods.TvModel)
                 .AddTheGood()
                 .DeleteSelectedGood()
                 .MessageShouldBe(Messages.DeleteMessage);

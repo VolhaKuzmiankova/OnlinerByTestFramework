@@ -1,5 +1,4 @@
-﻿using OnlinerByTestFramework.Constants;
-using OnlinerByTestFramework.Pages;
+﻿using OnlinerByTestFramework.Pages;
 using OnlinerByTestFramework.Steps.Base;
 using OpenQA.Selenium;
 using Xunit;
@@ -21,16 +20,16 @@ namespace OnlinerByTestFramework.Steps
             _cartPage = new CartPage(driver);
         }
 
-        public CleanCartSteps OpenCatalog()
+        public CleanCartSteps OpenCatalog(string product)
         {
-            _homePage.OpenCatalog(TypeOfGoods.ProductTv);
+            _homePage.OpenCatalog();
 
             return this;
         }
 
-        public CleanCartSteps ChooseModel()
+        public CleanCartSteps ChooseModel(string model)
         {
-            _catalogSamsung.OpenGoodsPage(TypeOfGoods.TvModel);
+            _catalogSamsung.OpenGoodsPage();
 
             return this;
         }

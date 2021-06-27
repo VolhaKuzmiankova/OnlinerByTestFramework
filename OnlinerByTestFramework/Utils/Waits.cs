@@ -7,16 +7,22 @@ namespace OnlinerByTestFramework.Utils
 {
     public class Waits
     {
-        private WebDriverWait _wait;
+        private static Waits _instance;
 
-        public Waits(IWebDriver driver)
+        public static Waits GetInstance(IWebDriver driver)
         {
-            _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+            return _instance ??= new Waits(driver);
+        }
+
+        private readonly WebDriverWait _wait;
+
+        private Waits(IWebDriver driver)
+        {
+            _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(Startup.AppSettings.Configuration.WaitTimeMin));
         }
 
         public bool IsElementVisible(By by)
         {
-          
             try
             {
                 _wait.Until(ExpectedConditions.ElementIsVisible(by));

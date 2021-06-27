@@ -13,7 +13,7 @@ namespace OnlinerByTestFramework.Pages
         {
         }
 
-        public GoodsPage OpenGoodsPage(string model)
+        public GoodsPage OpenGoodsPage()
         {
             Driver.FindElement(ModelSelector).Click();
 

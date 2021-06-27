@@ -1,5 +1,6 @@
 ﻿using OnlinerByTestFramework.Constants;
 using OnlinerByTestFramework.Pages.Base;
+using OnlinerByTestFramework.Utils;
 using OpenQA.Selenium;
 
 namespace OnlinerByTestFramework.Pages
@@ -8,7 +9,7 @@ namespace OnlinerByTestFramework.Pages
     {
         private static readonly By BuyButtonSelector = By.LinkText("В корзину");
 
-        private static readonly By ToCartButtonSelector = By.LinkText("В корзине");
+        private static readonly By ToCartButtonSelector = By.XPath("//*[text()='В корзине']");
 
 
         public GoodsPage(IWebDriver driver) : base(driver, BuyButtonSelector, PageName.GoodsPage)
@@ -24,8 +25,7 @@ namespace OnlinerByTestFramework.Pages
 
         public CartPage GoToCart()
         {
-            var cartButton = Waits.WaitToBeClickable(ToCartButtonSelector);
-            cartButton.Click();
+            Waits.GetInstance(Driver).WaitToBeClickable(ToCartButtonSelector).Click();
 
             return new CartPage(Driver);
         }

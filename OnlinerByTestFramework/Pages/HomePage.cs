@@ -12,8 +12,7 @@ namespace OnlinerByTestFramework.Pages
         {
         }
 
-
-        public CatalogSamsungPage OpenCatalog(string model)
+        public CatalogSamsungPage OpenCatalog()
         {
             Driver.FindElement(CatalogSelector).Click();
 

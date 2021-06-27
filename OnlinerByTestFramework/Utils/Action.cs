@@ -5,12 +5,19 @@ namespace OnlinerByTestFramework.Utils
 {
     public class Action
     {
-        private  Actions _actions;
-        private  Waits _waits;
-        public Action(IWebDriver driver)
+        private static Action _instance;
+        private Waits _waits;
+        private readonly Actions _actions;
+
+        public static Action GetInstance(IWebDriver driver)
+        {
+            return _instance ??= new Action(driver);
+        }
+
+        private Action(IWebDriver driver)
         {
             _actions = new Actions(driver);
-            _waits = new Waits(driver);
+            _waits = Waits.GetInstance(driver);
         }
 
         public void MoveToElementAndClick(By by)

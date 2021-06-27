@@ -8,7 +8,7 @@ namespace OnlinerByTestFramework.Tests
     {
         private readonly string _userName = Startup.AppSettings.User.UserName;
         private readonly string _password = Startup.AppSettings.User.Password;
-        
+
         private readonly TestFixture _fixture;
 
         public LoginTest(TestFixture fixture)
@@ -20,9 +20,8 @@ namespace OnlinerByTestFramework.Tests
         public void LoginTest_WithValidCredential()
         {
             var loginSteps = new LoginSteps(_fixture.Driver);
-            
-            loginSteps.OpenLoginForm().Login(_userName, _password);
 
+            loginSteps.OpenLoginForm().Login(_userName, _password);
         }
     }
 }
