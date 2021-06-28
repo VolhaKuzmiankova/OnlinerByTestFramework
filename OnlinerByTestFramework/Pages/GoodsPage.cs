@@ -18,14 +18,14 @@ namespace OnlinerByTestFramework.Pages
 
         public GoodsPage ClickBuyButton()
         {
-            Driver.FindElement(BuyButtonSelector).Click();
+            Waits.WaitToBeClickable(Driver, BuyButtonSelector).Click();
 
             return this;
         }
 
         public CartPage GoToCart()
         {
-            Waits.GetInstance(Driver).WaitToBeClickable(ToCartButtonSelector).Click();
+            Waits.WaitToBeClickable(Driver, ToCartButtonSelector).Click();
 
             return new CartPage(Driver);
         }

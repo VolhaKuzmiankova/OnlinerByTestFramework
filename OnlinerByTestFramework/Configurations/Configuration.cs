@@ -6,6 +6,6 @@ namespace OnlinerByTestFramework.Configurations
     {
         public BrowserName Browser { get; set; }
 
-        public int WaitTimeMin { get; set; }
+        public int WaitForTimeout { get; set; }
     }
 }

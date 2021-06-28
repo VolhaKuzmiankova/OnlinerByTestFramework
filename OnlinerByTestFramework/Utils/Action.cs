@@ -3,26 +3,11 @@ using OpenQA.Selenium.Interactions;
 
 namespace OnlinerByTestFramework.Utils
 {
-    public class Action
+    public static class Action
     {
-        private static Action _instance;
-        private Waits _waits;
-        private readonly Actions _actions;
-
-        public static Action GetInstance(IWebDriver driver)
+        public static void MoveToElementAndClick(IWebDriver driver, By by)
         {
-            return _instance ??= new Action(driver);
-        }
-
-        private Action(IWebDriver driver)
-        {
-            _actions = new Actions(driver);
-            _waits = Waits.GetInstance(driver);
-        }
-
-        public void MoveToElementAndClick(By by)
-        {
-            _actions.MoveToElement(_waits.WaitToBeVisible(by))
+            new Actions(driver).MoveToElement(Waits.WaitToBeVisible(driver, by))
                 .Click()
                 .Build()
                 .Perform();

@@ -19,7 +19,7 @@ namespace OnlinerByTestFramework.Pages.Base
 
         public void IsPageOpened()
         {
-            var isVisible = Waits.GetInstance(Driver).IsElementVisible(locator);
+            var isVisible = Waits.IsElementVisible(Driver, locator);
             if (!isVisible)
             {
                 throw new Exception($"Page is not opened {_pageName}");

@@ -12,7 +12,6 @@ namespace OnlinerByTestFramework.Capabilities
             chromeOptions.AddArgument("--disable-gpu");
             chromeOptions.AddArgument("--disable-extensions");
             chromeOptions.AddArgument("--start-maximized");
-            chromeOptions.AddArgument("--no-sandbox");
 
 
             chromeOptions.SetLoggingPreference(LogType.Browser, LogLevel.All);

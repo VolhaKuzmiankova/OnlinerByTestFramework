@@ -5,27 +5,15 @@ using SeleniumExtras.WaitHelpers;
 
 namespace OnlinerByTestFramework.Utils
 {
-    public class Waits
+    public static class Waits
     {
-        private static Waits _instance;
-
-        public static Waits GetInstance(IWebDriver driver)
-        {
-            return _instance ??= new Waits(driver);
-        }
-
-        private readonly WebDriverWait _wait;
-
-        private Waits(IWebDriver driver)
-        {
-            _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(Startup.AppSettings.Configuration.WaitTimeMin));
-        }
-
-        public bool IsElementVisible(By by)
+        public static bool IsElementVisible(IWebDriver driver, By by)
         {
             try
             {
-                _wait.Until(ExpectedConditions.ElementIsVisible(by));
+                new WebDriverWait(driver,
+                        TimeSpan.FromSeconds(Startup.AppSettings.Configuration.WaitForTimeout))
+                    .Until(ExpectedConditions.ElementIsVisible(by));
             }
             catch (NoSuchElementException)
             {
@@ -35,14 +23,18 @@ namespace OnlinerByTestFramework.Utils
             return true;
         }
 
-        public IWebElement WaitToBeClickable(By by)
+        public static IWebElement WaitToBeClickable(IWebDriver driver, By by)
         {
-            return _wait.Until(ExpectedConditions.ElementToBeClickable(by));
+            return new WebDriverWait(driver,
+                    TimeSpan.FromSeconds(Startup.AppSettings.Configuration.WaitForTimeout))
+                .Until(ExpectedConditions.ElementToBeClickable(by));
         }
 
-        public IWebElement WaitToBeVisible(By by)
+        public static IWebElement WaitToBeVisible(IWebDriver driver, By by)
         {
-            return _wait.Until(ExpectedConditions.ElementIsVisible(by));
+            return new WebDriverWait(driver,
+                    TimeSpan.FromSeconds(Startup.AppSettings.Configuration.WaitForTimeout))
+                .Until(ExpectedConditions.ElementIsVisible(by));
         }
     }
 }

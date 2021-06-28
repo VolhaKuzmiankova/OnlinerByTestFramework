@@ -16,7 +16,7 @@ namespace OnlinerByTestFramework.Tests
         }
 
         [Fact]
-        public void DeleteSelectedGood_FromCart()
+        public void CleanCart_DeleteSelectedGood_DeletedSuccessfully()
         {
             var cleanCartSteps = new CleanCartSteps(_fixture.Driver);
 
