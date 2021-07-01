@@ -1,22 +1,24 @@
 ﻿using OnlinerByTestFramework.Constants;
 using OnlinerByTestFramework.Pages.Base;
+using OnlinerByTestFramework.Wrappers;
 using OpenQA.Selenium;
 
 namespace OnlinerByTestFramework.Pages
 {
     public class HomePage : BasePage
     {
-        private static readonly By CatalogSelector = By.XPath($"//span[contains(text(),'{TypeOfGoods.ProductTv}')]");
+        private static readonly By CatalogSelector =
+            By.XPath($"//span[contains(text(),'{TypeOfGoods.Products.ProductTv}')]");
 
         public HomePage(IWebDriver driver) : base(driver, CatalogSelector, PageName.HomePage)
         {
         }
 
-        public CatalogSamsungPage OpenCatalog()
+        public CatalogPage OpenCatalog(string product)
         {
-            Driver.FindElement(CatalogSelector).Click();
+            new WebElement("Product Catalog", Driver, CatalogSelector).Click();
 
-            return new CatalogSamsungPage(Driver);
+            return new CatalogPage(Driver);
         }
     }
 }

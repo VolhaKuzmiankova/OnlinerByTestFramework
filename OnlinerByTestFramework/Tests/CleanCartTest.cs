@@ -9,20 +9,19 @@ namespace OnlinerByTestFramework.Tests
     {
         private readonly TestFixture _fixture;
 
-
         public CleanCartTest(TestFixture fixture)
         {
             _fixture = fixture;
         }
 
-        [Fact]
+        [Fact(DisplayName = "Cleaning out the shopping cart")]
         public void CleanCart_DeleteSelectedGood_DeletedSuccessfully()
         {
             var cleanCartSteps = new CleanCartSteps(_fixture.Driver);
 
-            cleanCartSteps.OpenCatalog(TypeOfGoods.ProductTv)
-                .ChooseModel(TypeOfGoods.TvModel)
-                .AddTheGood()
+            cleanCartSteps.OpenCatalog(TypeOfGoods.Products.ProductTv)
+                .ChooseModel(TypeOfGoods.Models.TvModel)
+                .AddGoodToCart()
                 .DeleteSelectedGood()
                 .MessageShouldBe(Messages.DeleteMessage);
         }

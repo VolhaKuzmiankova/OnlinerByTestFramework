@@ -7,12 +7,14 @@ namespace OnlinerByTestFramework.Utils
 {
     public static class Waits
     {
-        public static bool IsElementVisible(IWebDriver driver, By by)
+        private const double waitForTimeOut = 10;
+
+        public static bool IsElementVisible(IWebDriver driver, By by, double timeout = waitForTimeOut)
         {
             try
             {
                 new WebDriverWait(driver,
-                        TimeSpan.FromSeconds(Startup.AppSettings.Configuration.WaitForTimeout))
+                        TimeSpan.FromSeconds(timeout))
                     .Until(ExpectedConditions.ElementIsVisible(by));
             }
             catch (NoSuchElementException)
@@ -23,17 +25,17 @@ namespace OnlinerByTestFramework.Utils
             return true;
         }
 
-        public static IWebElement WaitToBeClickable(IWebDriver driver, By by)
+        public static IWebElement WaitToBeClickable(IWebDriver driver, By by, double timeout = waitForTimeOut)
         {
             return new WebDriverWait(driver,
-                    TimeSpan.FromSeconds(Startup.AppSettings.Configuration.WaitForTimeout))
+                    TimeSpan.FromSeconds(timeout))
                 .Until(ExpectedConditions.ElementToBeClickable(by));
         }
 
-        public static IWebElement WaitToBeVisible(IWebDriver driver, By by)
+        public static IWebElement WaitToBeVisible(IWebDriver driver, By by, double timeout = waitForTimeOut)
         {
             return new WebDriverWait(driver,
-                    TimeSpan.FromSeconds(Startup.AppSettings.Configuration.WaitForTimeout))
+                    TimeSpan.FromSeconds(timeout))
                 .Until(ExpectedConditions.ElementIsVisible(by));
         }
     }

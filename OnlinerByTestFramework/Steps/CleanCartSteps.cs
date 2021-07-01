@@ -8,33 +8,34 @@ namespace OnlinerByTestFramework.Steps
     public class CleanCartSteps : BaseSteps
     {
         private readonly HomePage _homePage;
-        private readonly CatalogSamsungPage _catalogSamsung;
+        private readonly CatalogPage _catalogPage;
         private readonly GoodsPage _goodsPage;
         private readonly CartPage _cartPage;
+
 
         public CleanCartSteps(IWebDriver driver) : base(driver)
         {
             _homePage = new HomePage(driver);
-            _catalogSamsung = new CatalogSamsungPage(driver);
+            _catalogPage = new CatalogPage(driver);
             _goodsPage = new GoodsPage(driver);
             _cartPage = new CartPage(driver);
         }
 
         public CleanCartSteps OpenCatalog(string product)
         {
-            _homePage.OpenCatalog();
+            _homePage.OpenCatalog(product);
 
             return this;
         }
 
         public CleanCartSteps ChooseModel(string model)
         {
-            _catalogSamsung.OpenGoodsPage();
+            _catalogPage.OpenGoodsPage(model);
 
             return this;
         }
 
-        public CleanCartSteps AddTheGood()
+        public CleanCartSteps AddGoodToCart()
         {
             _goodsPage.ClickBuyButton();
             _goodsPage.GoToCart();

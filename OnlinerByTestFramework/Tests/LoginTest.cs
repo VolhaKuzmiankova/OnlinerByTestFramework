@@ -16,7 +16,7 @@ namespace OnlinerByTestFramework.Tests
             _fixture = fixture;
         }
 
-        [Fact]
+        [Fact(DisplayName = "Login with valid credential")]
         public void LoginTest_WithValidCredential()
         {
             var loginSteps = new LoginSteps(_fixture.Driver);

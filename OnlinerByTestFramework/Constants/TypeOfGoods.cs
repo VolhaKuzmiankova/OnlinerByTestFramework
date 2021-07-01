@@ -2,7 +2,15 @@
 {
     public static class TypeOfGoods
     {
-        public const string ProductTv = "Телевизоры";
-        public const string TvModel = "Samsung UE50TU7570U";
+        public static class Products
+        {
+            public const string ProductTv = "Телевизоры";
+        }
+
+        public static class Models
+
+        {
+            public const string TvModel = "Samsung UE50TU7570U";
+        }
     }
 }

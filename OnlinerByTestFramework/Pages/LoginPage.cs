@@ -1,5 +1,6 @@
 ﻿using OnlinerByTestFramework.Constants;
 using OnlinerByTestFramework.Pages.Base;
+using OnlinerByTestFramework.Wrappers;
 using OpenQA.Selenium;
 
 namespace OnlinerByTestFramework.Pages
@@ -15,7 +16,6 @@ namespace OnlinerByTestFramework.Pages
         private static readonly By LoginButtonSelector =
             By.XPath("//*[@class ='auth-form__control auth-form__control_condensed-additional']");
 
-        private static readonly By GoodsTypeSelector = By.XPath("//span[contains(text(),'Телевизоры')]");
 
         public LoginPage(IWebDriver driver) : base(driver, ButtonSelector, PageName.LoginPage)
         {
@@ -23,35 +23,28 @@ namespace OnlinerByTestFramework.Pages
 
         public LoginPage OpenForm()
         {
-            Driver.FindElement(ButtonSelector).Click();
+            new WebElement("Button", Driver, ButtonSelector).Click();
 
             return this;
         }
 
         public LoginPage TypeUsername(string username)
         {
-            Driver.FindElement(EmailSelector).SendKeys(username);
+            new WebElement("Username", Driver, EmailSelector).SendKeys(username);
 
             return this;
         }
 
         public LoginPage TypePassword(string password)
         {
-            Driver.FindElement(PasswordSelector).SendKeys(password);
+            new WebElement("Password", Driver, PasswordSelector).SendKeys(password);
 
             return this;
         }
 
         public LoginPage SubmitForm()
         {
-            Driver.FindElement(LoginButtonSelector).Click();
-
-            return this;
-        }
-
-        public LoginPage OpenCatalog()
-        {
-            Driver.FindElement(GoodsTypeSelector).Click();
+            new WebElement("LoginButton", Driver, LoginButtonSelector).Click();
 
             return this;
         }
