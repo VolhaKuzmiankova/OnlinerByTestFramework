@@ -11,7 +11,6 @@ namespace OnlinerByTestFramework.Pages
 
         private static readonly By ToCartButtonSelector = By.XPath("//*[text()='В корзине']");
 
-
         public GoodsPage(IWebDriver driver) : base(driver, BuyButtonSelector, PageName.GoodsPage)
         {
         }

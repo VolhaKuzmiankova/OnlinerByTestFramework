@@ -8,8 +8,8 @@ namespace OnlinerByTestFramework.Pages
     public class CartPage : BasePage
     {
         private static readonly By DeleteButtonSelector = By.XPath("//div[@class='cart-form__control'][1]");
-
-        private static readonly By MessageSelector = By.XPath($" //div[contains(text(),'{TypeOfGoods.Models.TvModel}')]");
+        
+        private static readonly By MessageSelector = By.XPath($" //div[contains(text(),'{GoodsAndModels.Models.TvModel}')]");
 
         public CartPage(IWebDriver driver) : base(driver, DeleteButtonSelector, PageName.CartPage)
         {

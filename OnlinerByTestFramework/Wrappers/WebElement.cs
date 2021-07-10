@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using OnlinerByTestFramework.Exceptions;
+using OnlinerByTestFramework.Utils;
 using OpenQA.Selenium;
 
 namespace OnlinerByTestFramework.Wrappers
 {
     public class WebElement
     {
-        private IWebDriver _driver;
-        private By _by;
+        private readonly IWebDriver _driver;
+        private readonly By _by;
         private IWebElement _element;
-
 
         public WebElement(string name, IWebDriver driver, By by)
         {
@@ -25,10 +24,9 @@ namespace OnlinerByTestFramework.Wrappers
                 _element = _driver.FindElement(by);
                 return _element;
             }
-            catch (ElementException ex)
+            catch (NoSuchElementException ex)
             {
-                Console.WriteLine($"{ex} Element does not exist");
-                throw;
+                throw new ElementException("Element does not exist", ex);
             }
         }
 
@@ -36,7 +34,6 @@ namespace OnlinerByTestFramework.Wrappers
         {
             return _driver.FindElements(by);
         }
-
 
         public void Clear()
         {
@@ -53,9 +50,14 @@ namespace OnlinerByTestFramework.Wrappers
             FindElement(_by).Submit();
         }
 
-
         public void Click()
         {
+            FindElement(_by).Click();
+        }
+
+        public void WaitAndClick()
+        {
+            Waits.IsElementVisible(_driver, _by);
             FindElement(_by).Click();
         }
     }

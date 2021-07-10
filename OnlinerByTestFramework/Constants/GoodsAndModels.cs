@@ -1,6 +1,6 @@
 ﻿namespace OnlinerByTestFramework.Constants
 {
-    public static class TypeOfGoods
+    public static class GoodsAndModels
     {
         public static class Products
         {
@@ -10,7 +10,7 @@
         public static class Models
 
         {
-            public const string TvModel = "Samsung UE50TU7570U";
+            public const string TvModel = "Samsung QE55Q80AAU";
         }
     }
 }

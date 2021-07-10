@@ -38,5 +38,11 @@ namespace OnlinerByTestFramework.Utils
                     TimeSpan.FromSeconds(timeout))
                 .Until(ExpectedConditions.ElementIsVisible(by));
         }
+
+        public static void FrameToBeAvailableAndSwitchToIt(IWebDriver driver, By by, double timeout = waitForTimeOut)
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(timeout)).Until(
+                ExpectedConditions.FrameToBeAvailableAndSwitchToIt(by));
+        }
     }
 }
