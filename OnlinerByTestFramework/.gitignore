@@ -131,4 +131,18 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
-/.idea
+.idea
+
+# Common IntelliJ Platform excludes
+
+*.suo
+*.user
+.vs/
+[Bb]in/
+[Oo]bj/
+_UpgradeReport_Files/
+[Pp]ackages/
+
+Thumbs.db
+Desktop.ini
+.DS_Store
