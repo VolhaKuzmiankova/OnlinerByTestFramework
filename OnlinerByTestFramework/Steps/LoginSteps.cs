@@ -24,8 +24,8 @@ namespace OnlinerByTestFramework.Steps
         public LoginSteps Login(string username, string password)
         {
             _loginPage
-                .TypeUsername(username)
-                .TypePassword(password)
+                .InputUsername(username)
+                .InputPassword(password)
                 .SubmitForm();
             
             return this;

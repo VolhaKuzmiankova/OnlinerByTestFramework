@@ -7,14 +7,15 @@ namespace OnlinerByTestFramework.Pages
 {
     public class SelectItemPage : BasePage
     {
-        private static readonly By ModelSelector = By.XPath($"//span[contains (text(), '{GoodsAndModels.Models.TvModel}')]");
-        public SelectItemPage(IWebDriver driver) : base(driver, ModelSelector, PageName.CatalogPage)
+        private static readonly By IsPageOpenedSelector = By.ClassName("schema-header__title");
+        
+        public SelectItemPage(IWebDriver driver) : base(driver, IsPageOpenedSelector, PageName.CatalogPage)
         {
         }
-
+        
         public GoodsPage OpenGoodsPage(string model)
         {
-            new WebElement("TV's model", Driver, ModelSelector).Click();
+            new WebElement("TV's model", Driver, By.XPath($"//span[contains (text(), '{model}')]")).Click();
 
 
             return new GoodsPage(Driver);

@@ -4,11 +4,11 @@ namespace OnlinerByTestFramework.Steps.Base
 {
     public class BaseSteps
     {
-        private IWebDriver _driver;
+        protected readonly IWebDriver Driver;
 
         protected BaseSteps(IWebDriver driver)
         {
-            _driver = driver;
+            Driver = driver;
         }
     }
 }

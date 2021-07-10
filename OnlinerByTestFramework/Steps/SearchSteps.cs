@@ -15,6 +15,7 @@ namespace OnlinerByTestFramework.Steps
 
         public SearchSteps SearchItem(string item)
         {
+            _homePage.IsPageOpened();
             _homePage.SearchItem(item);
 
             return this;

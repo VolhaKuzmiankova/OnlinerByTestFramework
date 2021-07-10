@@ -10,7 +10,7 @@ namespace OnlinerByTestFramework.Pages
     {
         private static readonly By SearchInputSelector = By.ClassName("fast-search__input");
 
-        private static readonly By CategoryOfGoodsSelector = By.CssSelector("li[data-bind*='search__result_active']:first-child");
+        private static readonly By GoodsCategorySelector = By.CssSelector("li[data-bind*='search__result_active']:first-child");
 
         private static readonly By FrameSelector = By.ClassName("modal-iframe");
 
@@ -20,10 +20,10 @@ namespace OnlinerByTestFramework.Pages
 
         public SelectItemPage SearchItem(string item)
         {
-            new WebElement("Search Field", Driver, SearchInputSelector).SendKeys(item);
+            new WebElement("SearchInput Field", Driver, SearchInputSelector).SendKeys(item);
 
             Waits.FrameToBeAvailableAndSwitchToIt(Driver, FrameSelector);
-            new WebElement("Category of good", Driver, CategoryOfGoodsSelector).WaitAndClick();
+            new WebElement("Category of good", Driver, GoodsCategorySelector).WaitAndClick();
             Driver.SwitchTo().DefaultContent();
 
             return new SelectItemPage(Driver);

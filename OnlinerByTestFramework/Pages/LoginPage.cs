@@ -14,6 +14,7 @@ namespace OnlinerByTestFramework.Pages
         private static readonly By PasswordSelector = By.XPath("//input[@placeholder ='Пароль']");
 
         private static readonly By LoginButtonSelector = By.XPath("//*[@class ='auth-form__control auth-form__control_condensed-additional']");
+
         public LoginPage(IWebDriver driver) : base(driver, ButtonSelector, PageName.LoginPage)
         {
         }
@@ -25,14 +26,14 @@ namespace OnlinerByTestFramework.Pages
             return this;
         }
 
-        public LoginPage TypeUsername(string username)
+        public LoginPage InputUsername(string username)
         {
             new WebElement("UsernameInput", Driver, EmailSelector).SendKeys(username);
 
             return this;
         }
 
-        public LoginPage TypePassword(string password)
+        public LoginPage InputPassword(string password)
         {
             new WebElement("PasswordInput", Driver, PasswordSelector).SendKeys(password);
 

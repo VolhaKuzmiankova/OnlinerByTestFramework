@@ -7,26 +7,27 @@ namespace OnlinerByTestFramework.Steps
 {
     public class CleanCartSteps : BaseSteps
     {
-        private readonly GoodsPage _goodsPage;
-        private readonly CartPage _cartPage;
+        private readonly CartPage cartPage;
 
         public CleanCartSteps(IWebDriver driver) : base(driver)
         {
-            _goodsPage = new GoodsPage(driver);
-            _cartPage = new CartPage(driver);
+            cartPage = new CartPage(driver);
         }
 
         public CleanCartSteps DeleteSelectedGood()
         {
-            _goodsPage.GoToCart();
-            _cartPage.DeleteGood();
+            var goodsPage = new GoodsPage(Driver);
+            goodsPage.IsPageOpened();
+            goodsPage.GoToCart();
+            cartPage.IsPageOpened();
+            cartPage.DeleteGood();
 
             return this;
         }
 
-        public CleanCartSteps MessageShouldBe(string expected)
+        public CleanCartSteps MessageShouldBe(string model, string expected)
         {
-            Assert.StartsWith(expected, _cartPage.GetMessage());
+            Assert.StartsWith(expected, cartPage.GetMessage(model));
 
             return this;
         }

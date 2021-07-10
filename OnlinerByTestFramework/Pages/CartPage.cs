@@ -8,8 +8,6 @@ namespace OnlinerByTestFramework.Pages
     public class CartPage : BasePage
     {
         private static readonly By DeleteButtonSelector = By.XPath("//div[@class='cart-form__control'][1]");
-        
-        private static readonly By MessageSelector = By.XPath($" //div[contains(text(),'{GoodsAndModels.Models.TvModel}')]");
 
         public CartPage(IWebDriver driver) : base(driver, DeleteButtonSelector, PageName.CartPage)
         {
@@ -22,9 +20,9 @@ namespace OnlinerByTestFramework.Pages
             return this;
         }
 
-        public string GetMessage()
+        public string GetMessage(string model)
         {
-            return Waits.WaitToBeVisible(Driver, MessageSelector).Text;
+            return Waits.WaitToBeVisible(Driver, By.XPath($" //div[contains(text(),'{model}')]")).Text;
         }
     }
 }
