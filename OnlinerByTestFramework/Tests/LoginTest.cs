@@ -11,7 +11,6 @@ namespace OnlinerByTestFramework.Tests
         private readonly string _username = Env.GetString("USERNAME");
         private readonly string _password = Env.GetString("PASSWORD");
 
-
         public LoginTest(TestFixture fixture)
         {
             _fixture = fixture;
