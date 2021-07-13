@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using DotNetEnv;
+using Microsoft.Extensions.Configuration;
 using OnlinerByTestFramework.Configurations;
 
 namespace OnlinerByTestFramework
@@ -11,9 +12,13 @@ namespace OnlinerByTestFramework
 
         public Startup()
         {
+            Env.Load();
+            Env.TraversePath().Load();
+
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
+
             configuration.Bind(_appSettings);
             AppSettings = _appSettings;
         }
