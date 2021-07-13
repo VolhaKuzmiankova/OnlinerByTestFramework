@@ -1,3 +1,4 @@
+using DotNetEnv;
 using OnlinerByTestFramework.Fixtures;
 using OnlinerByTestFramework.Steps;
 using Xunit;
@@ -6,10 +7,9 @@ namespace OnlinerByTestFramework.Tests
 {
     public class LoginTest : IClassFixture<TestFixture>
     {
-        private readonly string _userName = Startup.AppSettings.User.UserName;
-        private readonly string _password = Startup.AppSettings.User.Password;
-
         private readonly TestFixture _fixture;
+        private readonly string _username = Env.GetString("USERNAME");
+        private readonly string _password = Env.GetString("PASSWORD");
 
         public LoginTest(TestFixture fixture)
         {
@@ -21,7 +21,7 @@ namespace OnlinerByTestFramework.Tests
         {
             var loginSteps = new LoginSteps(_fixture.Driver);
 
-            loginSteps.OpenLoginForm().Login(_userName, _password);
+            loginSteps.OpenLoginForm().Login(_username, _password);
         }
     }
 }

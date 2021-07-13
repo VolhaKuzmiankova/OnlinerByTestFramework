@@ -7,8 +7,7 @@ namespace OnlinerByTestFramework.Fixtures
     public class TestFixture : IDisposable
     {
         public IWebDriver Driver { get; }
-
-
+        
         public TestFixture()
         {
             Driver = DriverFactory.GetDriver(Startup.AppSettings.Configuration.Browser);
