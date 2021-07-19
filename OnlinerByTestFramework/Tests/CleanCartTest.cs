@@ -17,7 +17,7 @@ namespace OnlinerByTestFramework.Tests
         [Fact(DisplayName = "Cleaning out the shopping cart should be successfully")]
         public void CleanCart_DeleteSelectedGood_DeletedSuccessfully()
         {
-            const string SelectedTvModel = "Samsung QE55Q70AAU";
+            const string SelectedTvModel = "Samsung QE65Q80AAU";
 
             var searchItemSteps = new SearchSteps(_fixture.Driver);
             var addToCartSteps = new AddSelectedGoodToCartSteps(_fixture.Driver);
