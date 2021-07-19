@@ -12,19 +12,20 @@ namespace OnlinerByTestFramework.Factories
     public static class DriverFactory
     {
         private static readonly bool IsInsideContainer = Env.GetBool("INSIDE_CONTAINER");
+        private static readonly string SeleniumHub = Env.GetString("SELENIUM_HUB");
 
         public static IWebDriver GetDriver(BrowserName name)
         {
-            Console.WriteLine(Env.GetString("SELENIUM_HUB"));
+            var uri = new Uri(SeleniumHub);
             return name switch
             {
                 BrowserName.Chrome => IsInsideContainer ? 
-                    new RemoteWebDriver(new Uri(Env.GetString("SELENIUM_HUB")), DriverCapabilityGenerator.GetChromeOptions()) : 
+                    new RemoteWebDriver(uri, DriverCapabilityGenerator.GetChromeOptions()) : 
                     new ChromeDriver(DriverCapabilityGenerator.GetChromeOptions()),
                 BrowserName.FireFox => IsInsideContainer ? 
-                    new RemoteWebDriver(new Uri(Env.GetString("SELENIUM_HUB")), DriverCapabilityGenerator.GetFireFoxOptions()) :
+                    new RemoteWebDriver(uri, DriverCapabilityGenerator.GetFireFoxOptions()) :
                     new FirefoxDriver(DriverCapabilityGenerator.GetFireFoxOptions()),
-                _ => new ChromeDriver()
+                _ =>new ChromeDriver(DriverCapabilityGenerator.GetChromeOptions())
             };
         }
     }
