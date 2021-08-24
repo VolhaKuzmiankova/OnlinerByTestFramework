@@ -1,3 +1,4 @@
+using Allure.Xunit.Attributes;
 using DotNetEnv;
 using OnlinerByTestFramework.Fixtures;
 using OnlinerByTestFramework.Steps;
@@ -16,7 +17,7 @@ namespace OnlinerByTestFramework.Tests
             _fixture = fixture;
         }
 
-        [Fact(DisplayName = "Login with valid credential")]
+        [AllureXunit(DisplayName = "Login with valid credential")]
         public void LoginTest_WithValidCredential()
         {
             var loginSteps = new LoginSteps(_fixture.Driver);

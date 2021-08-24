@@ -4,7 +4,7 @@
     {
         public static class Products
         {
-            public const string ProductTv = "Телевизоры";
+            public const string ProductTv = "Телевизор";
         }
     }
 }

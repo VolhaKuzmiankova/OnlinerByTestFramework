@@ -10,15 +10,6 @@ namespace OnlinerByTestFramework.Steps
         {
         }
 
-        public AddSelectedGoodToCartSteps SelectGoodByModel(string model)
-        {
-            var selectItemPage = new SelectItemPage(Driver);
-            selectItemPage.IsPageOpened();
-            selectItemPage.OpenGoodsPage(model);
-
-            return this;
-        }
-
         public AddSelectedGoodToCartSteps AddGoodToCart()
         {
             var goodsPage = new GoodsPage(Driver);

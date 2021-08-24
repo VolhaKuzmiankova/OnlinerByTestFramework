@@ -16,14 +16,13 @@ namespace OnlinerByTestFramework.Factories
 
         public static IWebDriver GetDriver(BrowserName name)
         {
-            var uri = new Uri(SeleniumHub);
             return name switch
             {
                 BrowserName.Chrome => IsInsideContainer ? 
-                    new RemoteWebDriver(uri, DriverCapabilityGenerator.GetChromeOptions()) : 
+                    new RemoteWebDriver(new Uri(SeleniumHub), DriverCapabilityGenerator.GetChromeOptions()) : 
                     new ChromeDriver(DriverCapabilityGenerator.GetChromeOptions()),
                 BrowserName.FireFox => IsInsideContainer ? 
-                    new RemoteWebDriver(uri, DriverCapabilityGenerator.GetFireFoxOptions()) :
+                    new RemoteWebDriver(new Uri(SeleniumHub), DriverCapabilityGenerator.GetFireFoxOptions()) :
                     new FirefoxDriver(DriverCapabilityGenerator.GetFireFoxOptions()),
                 _ =>new ChromeDriver(DriverCapabilityGenerator.GetChromeOptions())
             };
